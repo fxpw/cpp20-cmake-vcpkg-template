@@ -1,0 +1,38 @@
+{
+
+    "todo-tree.tree.showCountsInTree": true,
+
+	"C_Cpp.default.includePath": [
+		"${default}",
+		"${workspaceFolder}/vcpkg_installed/x64-linux/include"
+	],
+	"cmake.configureSettings": {
+		"CMAKE_TOOLCHAIN_FILE": "/usr/local/vcpkg/scripts/buildsystems/vcpkg.cmake",
+		"VCPKG_TARGET_TRIPLET": "x64-linux"
+	},
+	"cmake.defaultVariants": {
+		"buildType": {
+			"default": "debug",
+			"description": "Тип сборки.",
+			"choices": {
+				"debug": {
+					"short": "Debug",
+					"long": "Отключение оптимизации — включение отладочных данных.",
+					"buildType": "Debug"
+				},
+				"release": {
+					"short": "Release",
+					"long": "Оптимизация для быстродействия — исключение отладочных данных.",
+					"buildType": "Release"
+				},
+			}
+		}
+	},
+	"files.associations": {
+		"*.embeddedhtml": "html",
+		"iostream": "cpp",
+		"*.tcc": "cpp",
+		"string": "cpp"
+	},
+	"C_Cpp.default.compilerPath": "/usr/bin/gcc"
+}
