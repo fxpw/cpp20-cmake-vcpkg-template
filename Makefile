@@ -9,8 +9,30 @@ include $(ENV_FILE)
 all: pre_build
 
 
+_check_vcpkg:
+	@if [ -d /usr/local/vcpkg ]; then \
+		echo "vcpkg уже установлен. Пропускаем установку."; \
+	else \
+		make _install_vcpkg; \
+	fi
+
+_install_vcpkg:
+	sudo apt-get update && \
+	sudo apt-get install -y cmake gdb pkg-config linux-libc-dev && \
+	sudo mkdir -p /usr/local/vcpkg && \
+	sudo git clone https://github.com/microsoft/vcpkg.git /usr/local/vcpkg && \
+	cd /usr/local/vcpkg && \
+	sudo ./bootstrap-vcpkg.sh && \
+	export PATH="$PATH:/usr/local/vcpkg" && \
+	echo 'export PATH="$PATH:/usr/local/vcpkg"' >> ~/.bashrc && \
+	source ~/.bashrc && \
+	/usr/local/vcpkg/vcpkg integrate install && \
+	sudo chown -R $USER:$USER /usr/local/vcpkg
+
+i_all:_check_vcpkg v_install
+
 v_find:
-	sudo /usr/local/vcpkg/vcpkg search "$(p)"
+	/usr/local/vcpkg/vcpkg search "$(p)"
 v_install:
 	sudo /usr/local/vcpkg/vcpkg install
 
