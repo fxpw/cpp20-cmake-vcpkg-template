@@ -40,24 +40,6 @@ clean:
 	rm -rf ./build
 	rm -rf ./vcpkg_installed 
 
-d_build:
-	docker compose build
-d_build_no_cache:
-	docker compose build --no-cache
-d_stop:
-	docker compose down
-d_down:
-	docker compose down
-d_run:
-	docker compose up -d
-d_up:
-	docker compose up -d
-d_start:
-	docker compose up -d
-d_build_start:
-	docker compose build
-d_rebuild: down build_no_cache up
-	echo "rebuild"
 
 pre_build_release:
 	mkdir -p $(BUILD_DIR)
