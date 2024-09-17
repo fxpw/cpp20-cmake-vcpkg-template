@@ -7,11 +7,15 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_BUILD_TYPE ${BUILD_MODE})
 
 set(CMAKE_TOOLCHAIN_FILE ${CMAKE_TOOLCHAIN_FILE} )
-set(CMAKE_PREFIX_PATH ./vcpkg_installed/${VCPKG_TARGET_TRIPLET})
+set(CMAKE_PREFIX_PATH vcpkg_installed/${VCPKG_TARGET_TRIPLET})
 
-add_executable(${PROJECT_NAME} main.cpp)
+include_directories(include)
 
-target_include_directories(${PROJECT_NAME} PRIVATE ./vcpkg_installed/${VCPKG_TARGET_TRIPLET}/include)
+file(GLOB_RECURSE SOURCES "src/*.cpp")
+
+add_executable(${PROJECT_NAME} main.cpp ${SOURCES})
+
+target_include_directories(${PROJECT_NAME} PRIVATE vcpkg_installed/${VCPKG_TARGET_TRIPLET}/include)
 
 find_package(CURL REQUIRED)
 find_package(OpenSSL REQUIRED)

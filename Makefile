@@ -2,11 +2,12 @@ m ?= $(shell date +%Y-%m-%d)
 c ?= $(shell date +%Y-%m-%d)
 BUILD_DIR := build
 ENV_FILE := .env
+
 include $(ENV_FILE)
 
 
-.PHONY: pre_build
-all: pre_build
+.PHONY: pre_run
+all: pre_run
 
 
 _check_vcpkg:
