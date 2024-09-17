@@ -35,7 +35,7 @@ i_all:_check_vcpkg v_install
 v_find:
 	/usr/local/vcpkg/vcpkg search "$(p)"
 v_install:
-	sudo /usr/local/vcpkg/vcpkg install
+	sudo /usr/local/vcpkg/vcpkg install --triplet $(VCPKG_TARGET_TRIPLET)
 
 clean:
 	rm -rf ./build
