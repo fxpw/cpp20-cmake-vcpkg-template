@@ -1,27 +1,46 @@
-> ```sudo apt-get update && sudo apt-get install -y cmake```
-> ```sudo apt-get install gdb```
-> ```sudo apt-get install pkg-config```
-> ```sudo apt install linux-libc-dev```
+# README
 
+## Описание
 
->```install vspkg in /usr/local/vcpkg```
+Данный проект использует систему сборки `Make` для автоматизации установки и конфигурации проекта. Программа настраивает зависимости через `vcpkg` и компилирует проект с использованием `CMake`.
 
->```sudo mkdir -p /usr/local/vcpkg```
+## Структура проекта
 
->```sudo git clone https://github.com/microsoft/vcpkg.git /usr/local/vcpkg```
+- `Makefile` — основной файл для сборки и управления зависимостями.
+- `.env` — файл с переменными окружения (например, `APP_NAME`, `CMAKE_TOOLCHAIN_FILE`, `VCPKG_TARGET_TRIPLET` и др.).
+- `build/` — директория для сборки проекта.
+- `vcpkg_installed/` — директория для установленных пакетов vcpkg.
 
->```cd /usr/local/vcpkg```
+## Установка и использование
 
->```sudo ./bootstrap-vcpkg.sh```
+1. **Клонировать репозиторий**:
+    ```bash
+    git clone <url_репозитория>
+    cd <имя_директории>
+    ```
 
->```export PATH="$PATH:/usr/local/vcpkg"```
+2. **Проверка vcpkg**:
+    ```bash
+    make i_all
+    ```
 
->```source ~/.bashrc```
+3. **Сборка проекта**:
+   - Для режима отладки:
+     ```bash
+     make pre_build_debug
+     ```
+   - Для релизного режима:
+     ```bash
+     make pre_build_release
+     ```
 
->```source ~/.zshrc```
->```/usr/local/vcpkg/vcpkg integrate install```
->```-DCMAKE_TOOLCHAIN_FILE=/usr/local/vcpkg/scripts/buildsystems/vcpkg.cmake```
-> ```sudo chown -R $USER:$USER /usr/local/vcpkg```
+4. **Запуск программы**:
+    ```bash
+    make pre_run
+    ```
 
+## Очистка сборки
 
-> ```make v_install```
+Для очистки ранее собранных файлов выполните:
+```bash
+make clean
