@@ -6,8 +6,8 @@ ENV_FILE := .env
 include $(ENV_FILE)
 
 
-.PHONY: pre_run
-all: pre_run
+.PHONY: i_all pre_run
+all: i_all pre_run
 
 
 _check_vcpkg:
