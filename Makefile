@@ -18,17 +18,17 @@ _check_vcpkg:
 	fi
 
 _install_vcpkg:
-	sudo apt-get update && \
-	sudo apt-get install -y cmake gdb pkg-config linux-libc-dev && \
-	sudo mkdir -p /usr/local/vcpkg && \
-	sudo git clone https://github.com/microsoft/vcpkg.git /usr/local/vcpkg && \
+	apt-get update && \
+	apt-get install -y cmake gdb pkg-config linux-libc-dev && \
+	mkdir -p /usr/local/vcpkg && \
+	git clone https://github.com/microsoft/vcpkg.git /usr/local/vcpkg && \
 	cd /usr/local/vcpkg && \
-	sudo ./bootstrap-vcpkg.sh && \
+	./bootstrap-vcpkg.sh && \
 	export PATH="$PATH:/usr/local/vcpkg" && \
 	echo 'export PATH="$PATH:/usr/local/vcpkg"' >> ~/.bashrc && \
 	source ~/.bashrc && \
 	/usr/local/vcpkg/vcpkg integrate install && \
-	sudo chown -R $USER:$USER /usr/local/vcpkg
+	chown -R $USER:$USER /usr/local/vcpkg
 
 i_all:_check_vcpkg v_install
 
