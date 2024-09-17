@@ -1,28 +1,42 @@
 {
+    "version": "2.0.0",
     "tasks": [
-		{
-			"type": "cppbuild",
-			"label": "C/C++: gcc сборка активного файла",
-			"command": "/usr/bin/gcc",
-			"args": [
-				"-fdiagnostics-color=always",
-				"-g",
-				"${file}",
-				"-o",
-				"${fileDirname}/${fileBasenameNoExtension}"
-			],
-			"options": {
-				"cwd": "${fileDirname}"
-			},
-			"problemMatcher": [
-				"$gcc"
-			],
-			"group": {
-				"kind": "build",
-				"isDefault": true
-			},
-			"detail": "Задача создана отладчиком."
-		}
-	],
-    "version": "2.0.0"
+        {
+            "label": "make_pre_build_debug", // Название задачи
+            "type": "shell", // Тип задачи
+            "command": "make", // Команда для выполнения
+            "args": [
+                "pre_build_debug" // Аргумент для команды make
+            ],
+            "group": {
+                "kind": "build", // Группа задач
+                "isDefault": true // Задача по умолчанию
+            },
+            "problemMatcher": ["$gcc"], // Устанавливаем matcher для обнаружения ошибок
+            "presentation": {
+                "echo": true,
+                "reveal": "always", // Показывать вывод в терминале
+                "focus": true,
+                "panel": "shared" // Использовать общий панельный терминал
+            }
+        },
+        {
+            "label": "make_pre_build_release", // Название задачи
+            "type": "shell", // Тип задачи
+            "command": "make", // Команда для выполнения
+            "args": [
+                "pre_build_release" // Аргумент для команды make
+            ],
+            "group": {
+                "kind": "build", // Группа задач
+            },
+            "problemMatcher": ["$gcc"], // Устанавливаем matcher для обнаружения ошибок
+            "presentation": {
+                "echo": true,
+                "reveal": "always", // Показывать вывод в терминале
+                "focus": true,
+                "panel": "shared" // Использовать общий панельный терминал
+            }
+        }
+    ]
 }
